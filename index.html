@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Math: Ruining Everything Since Forever!</title>
+
+		<link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<style type="text/css">
+		.reveal code, code {
+			font-family: "Droid Sans Mono", "Office Code Pro", "Source Code Pro", Monaco, Consolas, monospace;
+		}
+		.reveal h3, .reveal h4 {
+			text-transform: none;
+		}
+
+		.leftcode {
+			width: 45%;
+			float: left;
+		}
+
+		.stackright {
+			width: 45%;
+			float: right;
+		}
+		.reveal .stack {
+			border: 3px solid white;
+			margin: 2px;
+		}
+
+		.footer {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			padding: 1em;
+			text-align: center;
+		}
+
+		.reveal .history {
+			font-size: 50%;
+			top: 140px;
+			bottom: 0;
+			left: -130px;
+			padding: 1em;
+			position: absolute;
+		}
+
+		.reveal .history-item {
+			border: 2px solid #999;
+			color: #999;;
+			margin: 4px;
+			padding: 5px;
+			text-align: center;
+		}
+		.reveal .active {
+			color: #fff;
+			border: 2px solid white;
+		}
+		</style>
+	</head>
+	<body>
+		<!--
+		45 minutes.
+
+Let's take a tour of what standard math libraries do. How are they useful? How are they implemented? Why is Python 3.5 round(2.5) 2.0? Why is (2**100) % 31 different than pow(2, 100, 31)? How does John Carmack's fast inverse square root work?
+
+This is a fun romp into the world of prime numbers, bit twiddling, IEEE 754, and other things your grandparents warned you about.
+
+We'll provide examples in many languages, e.g., Java, Python, JavaScript.
+
+		-->
+		<div class="reveal">
+			<div class="slides">
+				<div class="footer"><a href="https://twitter.com/chris_swenson">@chris_swenson</a>
+			  &nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				<a href="https://github.com/swenson">github.com/swenson</a>
+				</div>
+				<section>
+					<h1>Math: Ruining Everything Since Forever</h1>
+					<p><strong>Christopher Swenson</strong></p>
+					<p>Confoo.CA Montreal 2017</p>
+				</section>
+				<section>
+					<h1>What is this talk?</h1>
+					<p>Math!</p>
+					<br />
+
+					<h2>Who is this talk for?</h2>
+					<p>Curious people who love math.</p>
+				</section>
+			</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				history: true,
+				transition: 'slide',
+				transitionSpeed: 'fast',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() {
+						hljs.initHighlightingOnLoad();
+						hljs.configure({tabReplace: '  '});
+					} }
+				]
+			});
+		</script>
+	</body>
+</html>

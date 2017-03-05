@@ -2,18 +2,18 @@
 function plot(data, name, fftname) {
     var canvas = document.getElementById(name);
     var screen = canvas.getContext('2d');
-    var width = 512;
+    var width = 1024;
     var height = 200;
     screen.clearRect(0, 0, width, height);
     screen.strokeStyle = '#0000ff';
     screen.strokeWidth = 1;
 
-    for (var i = 0; i < Math.min(512, data.length); i++) {
+    for (var i = 0; i < Math.min(1024, data.length); i++) {
         screen.strokeRect(i, 100, 1, data[i] * 400);
     }
-    var fftdata = new Array(512);
-    for (var i = 0; i < 512; i++) {
-        fftdata[i] = data[Math.round(hz / 512 * i)];
+    var fftdata = new Array(1024);
+    for (var i = 0; i < 1024; i++) {
+        fftdata[i] = data[Math.round(hz / 1024 * i)];
     }
     var freq = fft(fftdata);
     canvas = document.getElementById(fftname);
@@ -21,9 +21,8 @@ function plot(data, name, fftname) {
     screen.clearRect(0, 0, width, height);
     screen.strokeStyle = '#ff0000';
     screen.strokeWidth = 1;
-    for (var i = 0; i < Math.min(512, freq.length/2); i++) {
+    for (var i = 0; i < Math.min(1024, freq.length/2); i++) {
         screen.strokeRect(i, 100, 1, -math.abs(freq[i]) * 7);
-        console.log(i, Math.round(math.abs(freq[i])));
     }
 }
 

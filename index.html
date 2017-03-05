@@ -82,6 +82,9 @@
 		.reveal .smallcaps {
 			font-variant-caps: small-caps;
 		}
+		#freq-input {
+			font-size: 130%;
+		}
 		</style>
 	</head>
 	<body>
@@ -467,14 +470,35 @@ a×c (a×d + b×c) b×d</pre>
 					</code></pre>
 				</section>
 				<section>
-					<h3>Simple 250 Hz wave</h3>
-					<pre><code class="hljs">new Audio(makeAudioFile(wave(1.0, 250.0, 0.1))).play()</code></pre>
-					<p><button onClick="var data = wave(1.0, 250.0, 0.1); plot(data, 'wave250', 'fft250'); new Audio(makeAudioFile(data)).play()">Play</button></p>
+					<h3>Simple <input type="text" size="3" id="freq-input" value="500" /> Hz wave</h3>
+					<pre><code class="hljs">new Audio(makeAudioFile(wave(1.0, 500.0, 0.1))).play()</code></pre>
+					<p><button onClick="var data = wave(1.0, parseInt(document.getElementById('freq-input').value), 0.1); plot(data, 'wave500', 'fft500'); new Audio(makeAudioFile(data)).play()">Play</button></p>
 					<div style="float: left; width: 20%">Time plot:</div>
-					<canvas id="wave250" class="plot" width="1024" height="200" style="float: right; width: 80%"></canvas>
+					<canvas id="wave500" class="plot" width="1024" height="200" style="float: right; width: 80%"></canvas>
 					<div style="clear: both"></div>
 					<p style="float: left; width=20%">Freq plot:</p>
-					<canvas id="fft250" class="plot" width="1024" height="200" style="float: right; width: 80%"></canvas>
+					<canvas id="fft500" class="plot" width="1024" height="200" style="float: right; width: 80%"></canvas>
+					<div style="clear: both"></div>
+				</section>
+				<section>
+					<p><input type="text" size="3" id="freq-input-combo-1" value="350" /> Hz wave</p>
+					<p><input type="text" size="3" id="freq-input-combo-2" value="440" /> Hz wave</p>
+					<p><button onClick="var data0 = wave(1.0, parseInt(document.getElementById('freq-input-combo-1').value), 0.1); var data1 = wave(1.0, parseInt(document.getElementById('freq-input-combo-2').value), 0.1); var data = []; for (var i = 0; i < data0.length; i++) { data.push(data0[i] + data1[i]); }; plot(data, 'wave-plot', 'fft-plot'); new Audio(makeAudioFile(data)).play()">Play</button></p>
+					<div style="float: left; width: 20%">Time plot:</div>
+					<canvas id="wave-plot" class="plot" width="1024" height="200" style="float: right; width: 80%"></canvas>
+					<div style="clear: both"></div>
+					<p style="float: left; width=20%">Freq plot:</p>
+					<canvas id="fft-plot" class="plot" width="1024" height="200" style="float: right; width: 80%"></canvas>
+					<div style="clear: both"></div>
+				</section>
+				<section>
+					<p><button onClick="var data = squareWave(1.0, 3100, 0.05); plot(data, 'effect-wave-plot', 'effect-fft-plot'); new Audio(makeAudioFile(data.slice(0, 4800))).play()">Pew</button></p>
+					<p><button onClick="var data = triangleWave(1.0, 1600, 0.1); plot(data, 'effect-wave-plot', 'effect-fft-plot'); new Audio(makeAudioFile(data.slice(0, 4800))).play()">Boom</button></p>
+					<div style="float: left; width: 20%">Time plot:</div>
+					<canvas id="effect-wave-plot" class="plot" width="1024" height="200" style="float: right; width: 80%"></canvas>
+					<div style="clear: both"></div>
+					<p style="float: left; width=20%">Freq plot:</p>
+					<canvas id="effect-fft-plot" class="plot" width="1024" height="200" style="float: right; width: 80%"></canvas>
 					<div style="clear: both"></div>
 				</section>
 				<section>

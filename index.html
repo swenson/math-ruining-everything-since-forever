@@ -22,7 +22,7 @@
 		<script src="plot.js"></script>
 		<script src="birthday.js"></script>
 		<style type="text/css">
-		.reveal code, code {
+		.reveal code, code, pre, .reveal pre {
 			font-family: "Droid Sans Mono", "Office Code Pro", "Source Code Pro", Monaco, Consolas, monospace;
 		}
 		.reveal h3, .reveal h4 {
@@ -85,6 +85,12 @@
 		#freq-input {
 			font-size: 130%;
 		}
+		.reveal p {
+			text-align: left;
+		}
+		.reveal p.center {
+			text-align: center;
+		}
 		</style>
 	</head>
 	<body>
@@ -118,16 +124,16 @@ We'll provide examples in many languages, e.g., Java, Python, JavaScript.
 				<section>
 					<h2>Math: Ruining Everything Since Forever</h2>
 					<br />
-					<p><strong>Christopher Swenson</strong></p>
-					<p>Confoo <span class="smallcaps">ca</span>, Montreal 2017</p>
+					<p class="center"><strong>Christopher Swenson</strong></p>
+					<p class="center">Confoo <span class="smallcaps">ca</span>, Montreal 2017</p>
 				</section>
 				<section>
 					<h3>What is this talk?</h3>
-					<p>Math!</p>
+					<p class="center">Math!</p>
 					<br />
 
 					<h3>Who is this talk for?</h3>
-					<p>Curious people who love math.</p>
+					<p class="center">Curious people who love math.</p>
 				</section>
 				<section>
 					<h3>Who am I?</h3>
@@ -137,7 +143,7 @@ We'll provide examples in many languages, e.g., Java, Python, JavaScript.
 				</section>
 				<section>
 					<h3>What are we talking about?</h3>
-					<p>Weird math and computer math.</p>
+					<p class="center">Weird math and computer math.</p>
 					<ul>
 						<li>Rounding</li>
 						<li>Bits</li>
@@ -209,8 +215,8 @@ $ python3 bias.py
 				</section>
 				<section>
 				<h3>Addition</h3>
-				<p>$x + 1 > x$, right?</p>
-				<p>$x - 1 < x$, right?</p>
+				<p class="center">$x + 1 > x$, right?</p>
+				<p class="center">$x - 1 < x$, right?</p>
 <pre class="fragment">
 $ v8
 V8 version 5.1.281.47 [sample shell]
@@ -221,7 +227,7 @@ V8 version 5.1.281.47 [sample shell]
 </pre>
 				</section>
 				<section>
-				<p>$-x \not= x$ (except $x=0$), right?</p>
+				<p class="center">$-x \not= x$ (except $x=0$), right?</p>
 <pre>
 $ scala
 Welcome to Scala 2.12.1 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_92).
@@ -253,9 +259,9 @@ def f():
 					<p>The beautiful and terrible standard.</p>
 				</section>
 				<section>
-				<p><code>double</code>, 64 bits, 53 bits of precision</p>
+				<p class="center"><code>double</code>, 64 bits, 53 bits of precision</p>
 				<img style="background: #fff; width: 70%" src="IEEE_754_Double_Floating_Point_Format.svg" />
-				<p><a href="https://commons.wikimedia.org/wiki/File:IEEE_754_Double_Floating_Point_Format.svg">by Codekaizen, from WP</a>
+				<p class="center"><a href="https://commons.wikimedia.org/wiki/File:IEEE_754_Double_Floating_Point_Format.svg">by Codekaizen, from WP</a>
 				</section>
 				<section>
 				<ul>
@@ -285,21 +291,28 @@ float Q_rsqrt(float number) {
 				<section>
 					<h3>Birthday Paradox</h3>
 					<p>There are 366 birthdays. How many people do you need in a room before two have the same birthday?</p>
-					<p class="fragment"><strong>About 23</strong></p>
+					<p class="fragment center"><strong>About 23</strong></p>
 				</section>
 				<section>
 					<h3>Birthday Paradox Demo</h3>
 					<button onClick="clearBirthday('birthday', 'birthday_counter', 'birthday_prob')">Clear</button>
 					<button onClick="birthdayNext('birthday', 'birthday_counter', 'birthday_prob')">+</button>
-					<div>
+					<p>
 						Elements: <span id="birthday_counter"></span><br />
 						Probability of collision by now: <span id="birthday_prob"></span>
-					</div>
-					<div><small id="birthday"></small></div>
+					</p>
+					<p><small id="birthday"></small></p>
 				</section>
 				<section>
 					<p>This has lots of implications, but in general:</p>
 					<p>If there are $N$ choices of something picked uniformly at random, then it will take $\approx \sqrt{N}$ picks when you get a repeat with 50% probability.</p>
+				</section>
+				<section>
+					<p>This is the basis for SHA-1 collisions in the news</p>
+					<p>$160$-bit hash means $2^{160}$ possible hashes<p>
+					<p>$\quad\Rightarrow$ means $\approx 2^{80}$ needed to find a <em>random</em> collision</p>
+					<p>Can do better by taking advantage of weaknesses</p>
+					<p>Still can't find a parituclar collision, i.e., a <strong>pre-image</strong></p>
 				</section>
 				<section>
 					<h3>Benford's Law</h3>
@@ -309,12 +322,6 @@ float Q_rsqrt(float number) {
 					<!-- https://www.schneier.com/blog/archives/2009/07/information_lea_1.html -->
 					<img style="width: 30%; float: left;" src="security-keypad.jpg"/>
 					<img style="width: 30%; float: right;" src="digital-lock.jpg"/>
-				</section>
-				<section>
-					<h3>Gödel's Incompleteness Theorem</h3>
-					<p>
-						Any system capable of writing mathematics will not be able to prove some true statements.
-					</p>
 				</section>
 				<section>
 					<h3>Axiom of Choice</h3>
@@ -418,18 +425,6 @@ a×c (a×d + b×c) b×d</pre>
 					<p class="mult fragment">
 					  ... possibly $O(N^2)$ is the lower bound?
 					</p>
-				</section>
-
-				<section>
-					<h3>Fully Homomorphic Encryption and the future of computing</h3>
-				</section>
-				<section>
-					<p>What if we could encrypt data, send it to you,
-					have you compute with it (without knowing what it was), and send
-					it back to us?
-					</p>
-					<p>Example:</p>
-					<p>In 2009, Gentry figured out how to do this</p>
 				</section>
 				<section>
 					<h3>Discrete Fourier Transform</h3>

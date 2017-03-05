@@ -443,15 +443,32 @@ a×c (a×d + b×c) b×d</pre>
 						called the Fast Fourier Transform. And it is magic.</p>
 				</section>
 				<section>
-					<p>Show sample computations, diagrams</p>
+					<h3>FFT Computation</h3>
+					<p>FFT-$n$: split it into two FFTs of size $n/2$:</p>
+					<p>One: $y = \text{FFT}_{\frac{n}{2}}(x_0, x_2, \dots)$</p>
+					<p>The other: $z = \text{FFT}_{\frac{n}{2}}(x_1, x_3, \dots)$</p>
+					<p>"Butterfly" them together</p>
+					<div style="float: right">
+						(note: $\omega^{n/2} = -1$)<br />
+						&nbsp;
+					</div>
+					<div>
+						<span>$x_i' = y_i + \omega^i z_i$<br /></span>
+						<span>$x_{i+\frac{n}{2}}' = y_i - \omega^i z_i'$</span>
+					</div>
+				</section>
+				<section>
+					<canvas id="fftcomp" width="1024" height="400"></canvas>
+					<button onClick="fftdemo('fftcomp')">Show</button>
+					<button onClick="fftone('fftcomp')">Butterfly</button>
 				</section>
 				<section>
 					<h3>Why is this important?</h3>
 					<p><strong>Compression.</strong></p>
-					<p>Images and sound require a lot of raw data.</p>
-					<p>But, human eyes and ears are bad at discerning finer details, so we
-						can throw some of this data away?</p>
-					<p>But which "parts" of the data are more important?</p>
+					<p>Images and sound require lots of raw data</p>
+					<p>Human eyes, ears bad at discerning fine details</p>
+					<p>So throw some of this data away?</p>
+					<p>But which data "parts" to keep?</p>
 					<p>It turns out, the lower frequency parts!</p>
 				</section>
 				<section>
@@ -502,24 +519,25 @@ a×c (a×d + b×c) b×d</pre>
 					<div style="clear: both"></div>
 				</section>
 				<section>
-					<h3>FFT Computation</h3>
-					<p>FFT-$n$: split it into two FFTs of size $n/2$:</p>
-					<p>One: $y = \text{FFT}_{\frac{n}{2}}(x_0, x_2, \dots)$</p>
-					<p>The other: $z = \text{FFT}_{\frac{n}{2}}(x_1, x_3, \dots)$</p>
-					<p>"Butterfly" them together</p>
-					<div style="float: right">
-						(note: $\omega^{n/2} = -1$)<br />
-						&nbsp;
-					</div>
-					<div>
-					<span>$x_i' = y_i + \omega^i z_i$<br /></span>
-					<span>$x_{i+\frac{n}{2}}' = y_i - \omega^i z_i'$</span>
-					</div>
+					<h3>Last note: I am also a bad video game devleoper</h3>
+					<p class="fragment">But luckily, I kinda know math!</p>
 				</section>
 				<section>
-					<canvas id="fftcomp" width="1024" height="400"></canvas>
-					<button onClick="fftdemo('fftcomp')">Show</button>
-					<button onClick="fftone('fftcomp')">Butterfly</button>
+					<p>I have <strong>no</strong> idea how other people make video games, or say, sound in them, so I just make it up:</p>
+					<ul>
+						<li>Generate raw samples at 48,000 Hz</li>
+						<li>Convert to 16-bit PCM</li>
+						<li>Add a WAV file header</li>
+						<li>Base64 encode</li>
+						<li>Play as a data URL</li>
+						<li>... compose in JS console!</li>
+					</ul>
+					<div>
+						<button onClick="startSound()">Start</button>
+						<button onClick="loseSound()">Lose</button>
+						<button onClick="pew()">Pew</button>
+						<button onClick="beep()">Boom</button>
+					</div>
 				</section>
 			</div>
 

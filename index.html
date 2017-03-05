@@ -337,11 +337,10 @@ float Q_rsqrt(float number) {
 				</section>
 				<section>
 					<h3>Multiplication</h3>
-					<p>
-						Boring, I know right. But what if I told you... we've only found fast ways to do it since the 1960s.
-					</p>
-					<p>
-					<img style="width: 70%" src="Matrix-Morpheus.jpg" />
+					<p>Boring, I know right.</p>
+					<p>But what if I told you... we've only found fast ways to do it since the 1960s.</p>
+					<p class="center">
+					<img style="" src="Matrix-Morpheus.jpg" />
 					</p>
 				</section>
 				<section>
@@ -352,7 +351,7 @@ float Q_rsqrt(float number) {
 				<pre class="mult fragment">3 6  </pre>
 				<pre class="mult fragment">-----
 3 7 8</pre>
-				<p class="fragment">
+				<p class="fragment center">
 				4 &times; &emsp;&emsp; 1 +
 				</p>
 				</section>
@@ -364,7 +363,7 @@ float Q_rsqrt(float number) {
 				<pre class="mult">a×c b×c    </pre>
 				<pre class="mult">-----------
 a×c (a×d + b×c) b×d</pre>
-				<p class="">
+				<p class="center">
 				4 &times; &emsp;&emsp; 1 +
 				</p>
 				</section>
@@ -373,21 +372,20 @@ a×c (a×d + b×c) b×d</pre>
 					<p>Gives you $O(N^2)$ smaller multiplications</p>
 				</section>
 				<section>
-					<p>
-						<img style="width: 35%" src="Matrix-Morpheus.jpg" />
+					<p class="center">
+						<img style="" src="Matrix-Morpheus.jpg" />
 					</p>
 					<p>
 						Karatsuba found in 1960 that we can do it with only 3 smaller multiplies.
 					</p>
-					<p>$(a\times c)$, $(a\times d) + (b\times c)$, $(b\times d)$</p>
 				</section>
 				<section>
-					<p>$(a\times c)$, $(a\times d) + (b\times c)$, $(b\times d)$</p>
+					<p class="center">$(a\times c)$, $(a\times d) + (b\times c)$, $(b\times d)$</p>
 					<p>&nbsp;</p>
 					<p class="fragment">$(a\times c)$</p>
 					<p class="fragment">$(b\times d)$</p>
 					<p class="fragment">$(a + b)\times(c + d) - (a\times c) - (b \times d)$</p>
-					<p class="fragment">
+					<p class="fragment center">
 						<strong>3</strong> &times; &emsp;&emsp; 4 +/-
 					</p>
 				</section>
@@ -407,22 +405,26 @@ a×c (a×d + b×c) b×d</pre>
 					<p>
 						We've only found fast ways to do it since the 1960s.
 					</p>
-					<p>
-					<img style="width: 70%" src="Matrix-Morpheus.jpg" />
+					<p class="center">
+					<img style="" src="Matrix-Morpheus.jpg" />
 					</p>
 				</section>
 				<section>
-					<p>
+
 					$$\left[\begin{matrix}a & b\\c & d\\\end{matrix}\right] \times
-					  \left[\begin{matrix}e & f\\g & h\\\end{matrix}\right]$$
-					</p>
-					<p>
+					  \left[\begin{matrix}e & f\\g & h\\\end{matrix}\right]
+						= \left[\begin{matrix}ae + bg & af + bh\\ce + dg & cf + dh\\  \end{matrix}\right]$$
+
+					<p class="center">
 					  Naïvely, $O(N^3)$ multiplications
 					</p>
-					<p class="mult fragment">
+					<p class="fragment center">
+						Strassen: similar to trick before gets $O(N^{2.8074}$) (1969)
+					</p>
+					<p class="fragment center">
 					  ... down to $O(N^{2.3728639})$ multiplications (2014)
 					</p>
-					<p class="mult fragment">
+					<p class="fragment center">
 					  ... possibly $O(N^2)$ is the lower bound?
 					</p>
 				</section>
@@ -443,14 +445,14 @@ a×c (a×d + b×c) b×d</pre>
 					<p>One: $y = \text{FFT}_{\frac{n}{2}}(x_0, x_2, \dots)$</p>
 					<p>The other: $z = \text{FFT}_{\frac{n}{2}}(x_1, x_3, \dots)$</p>
 					<p>"Butterfly" them together</p>
-					<div style="float: right">
-						(note: $\omega^{n/2} = -1$)<br />
+					<p style="float: right">
+						(note: $\omega^{\frac{n}{2}} = -1$)<br />
 						&nbsp;
-					</div>
-					<div>
-						<span>$x_i' = y_i + \omega^i z_i$<br /></span>
-						<span>$x_{i+\frac{n}{2}}' = y_i - \omega^i z_i'$</span>
-					</div>
+					</p>
+					<p>
+						<span>$\quad x_{i\phantom{+\frac{n}{2}}}' = y_i + \omega^i z_i$<br /></span>
+						<span>$\quad x_{i+\frac{n}{2}}' = y_i - \omega^i z_i$</span>
+					</p>
 				</section>
 				<section>
 					<canvas id="fftcomp" width="1024" height="400"></canvas>
@@ -459,7 +461,7 @@ a×c (a×d + b×c) b×d</pre>
 				</section>
 				<section>
 					<h3>Why is this important?</h3>
-					<p><strong>Compression.</strong></p>
+					<p class="center"><strong>Compression.</strong></p>
 					<p>Images and sound require lots of raw data</p>
 					<p>Human eyes, ears bad at discerning fine details</p>
 					<p>So throw some of this data away?</p>

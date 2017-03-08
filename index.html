@@ -214,6 +214,20 @@ $ python3 bias.py
 </pre>
 				</section>
 				<section>
+					<h3>pow()</h3>
+					<p>Most math libraries have <code>Math.pow</code> or something analagous.</p>
+					<p>Be <strong>very</strong> careful with it with large powers.</p>
+					<p>If you are doing modular exponentiation, use a different function (Python <code>pow</code> is good).</p>
+				</section>
+				<section>
+					<h3>Random</h3>
+					<p>We could have a whole talk on random numbers</p>
+					<p>Also something easy to get wrong</p>
+					<p>Cryptographically safe: Slow</p>
+					<p>"Normal": fast, good for non-security usage</p>
+					<p>Good non-crypto: Mersenne Twister (Excel, PHP, Python, Ruby)</p>
+				</section>
+				<section>
 				<h3>Addition</h3>
 				<p class="center">$x + 1 > x$, right?</p>
 				<p class="center">$x - 1 < x$, right?</p>
@@ -268,6 +282,7 @@ def f():
 				<li>Can use integer comparison</li>
 				<li>Has weird things like <code>-0.0</code></li>
 				<li>For <strong>very</strong> tiny values (subnormal, denormal), there are security risks</li>
+				<li>Ruby (CVE-2013-4164): parsing floating-point could overflow the heap</li>
 				</ul>
 				</section>
 				<section>
@@ -338,8 +353,8 @@ float Q_rsqrt(float number) {
 				<section>
 					<h3>Multiplication</h3>
 					<p>Boring, I know right.</p>
-					<p>But what if I told you... we've only found fast ways to do it since the 1960s.</p>
-					<p class="center">
+					<p class="fragment" data-fragment-index="1">But what if I told you... we've only found fast ways to do it since the 1960s.</p>
+					<p class="center fragment" data-fragment-index="1">
 					<img style="" src="Matrix-Morpheus.jpg" />
 					</p>
 				</section>
@@ -370,6 +385,7 @@ a×c (a×d + b×c) b×d</pre>
 				<section>
 					<p>Can apply to large numbers recursively</p>
 					<p>Gives you $O(N^2)$ smaller multiplications</p>
+					<p>(Addition is always $O(N)$.)
 				</section>
 				<section>
 					<p class="center">
@@ -432,8 +448,12 @@ a×c (a×d + b×c) b×d</pre>
 					<h3>Discrete Fourier Transform</h3>
 					<p>Any time-series of numbers (e.g., color, sound samples) can be
 						converted into a set of frequencies (i.e., sin and cosine functions).</p>
-					<p>
-						You are already familiar with this: show equalizer</p>
+					<p>You are already familiar with this</p>
+				</section>
+				<section>
+					<a href="https://www.flickr.com/photos/javmorcas/6893457413/in/photolist-C4jU3-5Sx7J3-4VWbYj-8ehUV3-bCWAwM-bv9LJ2-bv9Ljg-brQ67K-2HPj3-jnnWyd-7J5WcE-7sZh5J-9Fc8Dk-5Cifwq-9WB3Lz-peWGRP-7euDyi-gzFxdP-es5YRU-boVraq-2XEgUC-9QWBUC-9v3DfC-8Qay5S-8kzHVs-95eXVc-qZbZG-nS8238-qZc1H-qZbYL-qZc13-9vCrey-pt29KZ-y9ck-ezQdZm-9d8HVf-9E2CuF-9v1FJu-3JUC5-8kPXUe-6cLJPc-bv9Lwp-ps2ZQ4-53mVbi-936fCu-7jdrQT-6BXn7B-4hLVSf-5A28n8-exN1Pk"><img style="width: 60%" src="6893457413_d9700e13d8_o.jpg"/></a>
+
+					<p class="center">(Photo by Javier Morales)</p>
 				</section>
 				<section>
 					<p>The key is that there is an <strong>efficient</strong> way to do this,

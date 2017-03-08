@@ -215,9 +215,13 @@ $ python3 bias.py
 				</section>
 				<section>
 					<h3>pow()</h3>
-					<p>Most math libraries have <code>Math.pow</code> or something analagous.</p>
+					<p>Most math libraries have <code>Math.pow</code>.</p>
 					<p>Be <strong>very</strong> careful with it with large powers.</p>
-					<p>If you are doing modular exponentiation, use a different function (Python <code>pow</code> is good).</p>
+					<p>If you are doing modular exponentiation, use a different function
+					<ul>
+						<li>Python <code>pow</code></li>
+						<li>Java <code>BigInteger.modPow</code>.</li>
+					</ul>
 				</section>
 				<section>
 					<h3>Random</h3>

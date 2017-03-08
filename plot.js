@@ -69,10 +69,10 @@ function fftdemo_draw(x, boxwidth, boxheight, leftmargin, elem) {
         fftdemo_draw(y, boxwidth, boxheight, leftmargin + 2 * boxwidth, elem);
         fftdemo_draw(z, boxwidth, boxheight, leftmargin + 2 * boxwidth, elem);
         for (var k = 0; k < x.length/2; k++) {
-            fftdemo_drawbox(x[k], x[k], boxwidth, boxheight, leftmargin, elem);
-            fftdemo_drawbox(x[k], x[k + x.length/2], boxwidth, boxheight, leftmargin, elem);
-            fftdemo_drawbox(x[k+x.length/2], x[k], boxwidth, boxheight, leftmargin, elem);
-            fftdemo_drawbox(x[k+x.length/2], x[k + x.length/2], boxwidth, boxheight, leftmargin, elem);
+            fftdemo_drawbox(y[k], x[k], boxwidth, boxheight, leftmargin, elem);
+            fftdemo_drawbox(z[k], x[k], boxwidth, boxheight, leftmargin, elem);
+            fftdemo_drawbox(y[k], x[k+x.length/2], boxwidth, boxheight, leftmargin, elem);
+            fftdemo_drawbox(z[k], x[k+x.length/2], boxwidth, boxheight, leftmargin, elem);
         }
     }
 }

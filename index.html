@@ -225,11 +225,14 @@ $ python3 bias.py
 				</section>
 				<section>
 					<h3>Random</h3>
-					<p>We could have a whole talk on random numbers</p>
-					<p>Also something easy to get wrong</p>
-					<p>Cryptographically safe: Slow</p>
-					<p>"Normal": fast, good for non-security usage</p>
+					<p>Easy to get wrong</p>
+					<ul>
+						<li>"Normal": fast, insecure</li>
+						<li>Cryptographically safe: Slow</li>
+					</ul>
 					<p>Good non-crypto: Mersenne Twister (Excel, PHP, Python, Ruby)</p>
+					<p>Not great: LCG</p>
+					<p>Secure: Yarrow, Fortuna, SHA1PRNG</p>
 				</section>
 				<section>
 				<h3>Addition</h3>
@@ -290,7 +293,10 @@ def f():
 				</ul>
 				</section>
 				<section>
-					<h3>Story: Inverse square root</h3>
+					<h2>Fun stories!</h2>
+				</section>
+				<section>
+					<h3>Inverse square root</h3>
 					<pre><code class="hljs" data-trim>
 float Q_rsqrt(float number) {
 	float x2 = number * 0.5F;
@@ -327,11 +333,12 @@ float Q_rsqrt(float number) {
 					<p>If there are $N$ choices of something picked uniformly at random, then it will take $\approx \sqrt{N}$ picks when you get a repeat with 50% probability.</p>
 				</section>
 				<section>
-					<p>This is the basis for SHA-1 collisions in the news</p>
-					<p>$160$-bit hash means $2^{160}$ possible hashes<p>
-					<p>$\quad\Rightarrow$ means $\approx 2^{80}$ needed to find a <em>random</em> collision</p>
-					<p>Can do better by taking advantage of weaknesses</p>
-					<p>Still can't find a parituclar collision, i.e., a <strong>pre-image</strong></p>
+					<h3>Birthday Paradox and SHA-1 collisions</h3>
+					<p>$160$-bit hash: $2^{160}$ possibilities<p>
+					<p>$\quad\Rightarrow$ $\approx 2^{80}$ work for a <em>random</em> collision</p>
+					<p>Less by taking advantage of weaknesses</p>
+					<p><strong>Cannot</strong> find a parituclar collision, i.e., a <strong>pre-image</strong></p>
+					<p>Danger: forge X.509 certs with duplicate signatures.</p>
 				</section>
 				<section>
 					<h3>Benford's Law</h3>
